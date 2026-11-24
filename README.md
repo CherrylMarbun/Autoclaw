@@ -244,6 +244,7 @@ Add a custom provider to the OpenCode configuration:
         "zai_auto": { "name": "Autoclaw Auto" },
         "zai_auto-fast": { "name": "Autoclaw Auto-Fast" },
         "zaicoding_glm-5.3": { "name": "Autoclaw GLM-5.3" },
+        "zai_glm-x-preview": { "name": "Autoclaw GLM-5.4" },
         "zai_glm-5.3-flash": { "name": "Autoclaw GLM-5.3 Flash" },
         "zai_glm-5.3-flashx-legal": { "name": "Autoclaw GLM-5.3 FlashX-Legal" }
       }

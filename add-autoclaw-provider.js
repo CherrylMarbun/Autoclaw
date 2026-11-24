@@ -12,6 +12,7 @@ console.log('sebelum -> v1:', hasV1, '| v2:', hasV2);
 const models = [
   ['zai_auto', 'Auto (AutoClaw)', 131072],
   ['zai_auto-fast', 'Auto Fast (AutoClaw)', 131072],
+  ['zai_glm-x-preview', 'GLM 5.4 (AutoClaw)', 131072],
   ['zaicoding_glm-5.3', 'GLM 5.3 Coding (AutoClaw)', 131072],
   ['zai_glm-5.3-flash', 'GLM 5.3 Flash (AutoClaw)', 131072],
   ['zai_glm-5.3-flashx-legal', 'GLM 5.3 FlashX Legal (AutoClaw)', 307200],
