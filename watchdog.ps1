@@ -61,7 +61,11 @@ try {
     try {
         $storeUrl = 'file:///' + ($base -replace '\\', '/') + '/lib/account-store.js'
         $env:GLMP_STORE_MODULE = $storeUrl
-        $activeManaged = (& node --input-type=module -e "import(process.env.GLMP_STORE_MODULE).then(m=>process.stdout.write(m.getActiveManagedId()||String()))" 2>$null)
+        $tmpOut = Join-Path $env:TEMP 'glmp-active-managed.txt'
+        Remove-Item $tmpOut -ErrorAction SilentlyContinue
+        $nodeArgs = @('--input-type=module', '-e', 'import(process.env.GLMP_STORE_MODULE).then(m=>process.stdout.write(m.getActiveManagedId()||String()))')
+        Start-Process -FilePath 'node' -ArgumentList $nodeArgs -WindowStyle Hidden -Wait -RedirectStandardOutput $tmpOut -ErrorAction SilentlyContinue | Out-Null
+        if (Test-Path $tmpOut) { $activeManaged = (Get-Content $tmpOut -Raw -ErrorAction SilentlyContinue) }
         Remove-Item Env:GLMP_STORE_MODULE -ErrorAction SilentlyContinue
     } catch { $activeManaged = '' }
 
