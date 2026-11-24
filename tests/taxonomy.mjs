@@ -307,6 +307,12 @@ check("resolveUpstreamModelId keeps known ids, maps auto, prefixes others", () =
   assert.equal(resolveUpstreamModelId(known, "auto"), "zai_auto");
   assert.equal(resolveUpstreamModelId(known, "glm-5.3"), "zai_glm-5.3");
 });
+check("glm-5.4 aliases map to the upstream preview id", () => {
+  const known = new Set(["zai_glm-x-preview"]);
+  for (const id of ["glm-5.4", "zai_glm-5.4", "glm-x-preview"]) {
+    assert.equal(resolveUpstreamModelId(known, id), "zai_glm-x-preview");
+  }
+});
 
 // ── Fallback model catalog ─────────────────────────────────────────────────
 
